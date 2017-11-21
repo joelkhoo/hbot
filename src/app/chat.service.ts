@@ -22,8 +22,15 @@ export class ChatService {
     return this.client.textRequest(msg)
                .then(res => {
                   const speech = res.result.fulfillment.speech;
-                  const botMessage = new Message(speech, 'bot');
-                  this.update(botMessage);
+                  console.log("counted messages "+res.result.fulfillment.messages.length);
+
+                  //Extracts each individual response message
+                  for(let h in res.result.fulfillment.messages){
+                    const botMessage = new Message(res.result.fulfillment.messages[h].speech, 'bot');
+                    this.update(botMessage);
+                  }
+                  //const botMessage = new Message(speech, 'bot');
+                  //this.update(botMessage);
                });
   }
   // Adds message to source

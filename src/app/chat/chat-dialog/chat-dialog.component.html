@@ -5,6 +5,6 @@
     {{ message.content }}
   </div>
 </ng-container>
-<label for="nameField">Your Message</label>
+<label for="nameField">{{startMessage}}</label>
 <input [(ngModel)]="formValue" (keyup.enter)="sendMessage()" type="text">
 <button (click)="sendMessage()">Send</button>
