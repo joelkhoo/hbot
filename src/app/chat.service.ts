@@ -21,14 +21,20 @@ export class ChatService {
     this.update(userMessage);
     return this.client.textRequest(msg)
                .then(res => {
-                  const speech = res.result.fulfillment.speech;
-                  console.log("counted messages "+res.result.fulfillment.messages.length);
+                  //const speech = res.result.fulfillment.speech;
+                  const messages = res.result.fulfillment.messages;
+                  //console.log("counted messages "+res.result.fulfillment.messages.length);
 
                   //Extracts each individual response message
-                  for(let h in res.result.fulfillment.messages){
-                    const botMessage = new Message(res.result.fulfillment.messages[h].speech, 'bot');
-                    this.update(botMessage);
+                  
+                  for(let h in messages){
+                    if(messages[h].type == 0){
+                      const botMessage = new Message(messages[h].speech, 'bot');
+                      this.update(botMessage);
+                    }
+
                   }
+
                   //const botMessage = new Message(speech, 'bot');
                   //this.update(botMessage);
                });
