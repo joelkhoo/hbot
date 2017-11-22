@@ -20,6 +20,7 @@
 *.launch
 .settings/
 *.sublime-workspace
+.firebaserc
 
 # IDE - VSCode
 .vscode/*
