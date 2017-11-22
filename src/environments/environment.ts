@@ -7,5 +7,23 @@ export const environment = {
   production: false,
   dialogflow: {
     angularBot: 'ce065c16522a4ff7834c1c3eafaf7594'
+  },
+  firebase: {
+    apiKey: 'AIzaSyBsgud6VqEv3oQtHnpfqinbkWuVTCgglVc',
+    authDomain: 'zipdoc-f17a8.firebaseapp.com',
+    databaseURL: 'zipdoc-f17a8.firebaseapp.com',
+    projectId: 'zipdoc-f17a8',
+    storageBucket: '<your-storage-bucket>'
   }
 };
+
+/*
+  firebase: {
+    apiKey: '<your-key>',
+    authDomain: '<your-project-authdomain>',
+    databaseURL: '<your-database-URL>',
+    projectId: 'zipdoc-f17a8',
+    storageBucket: '<your-storage-bucket>',
+    messagingSenderId: '<your-messaging-sender-id>'
+  }
+*/

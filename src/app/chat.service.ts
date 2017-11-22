@@ -33,13 +33,13 @@ export class ChatService {
                       this.update(botMessage);
                     } else if (messages[h].type == "4"){
                       let markUps = [];
-                      console.log("WOOT: "+JSON.stringify(messages[h].payload.telegram));
+                      //console.log("WOOT: "+JSON.stringify(messages[h].payload.telegram));
                       const replyMarkUp = messages[h].payload.telegram.reply_markup.inline_keyboard;
                       for(let markup in replyMarkUp){
                         //console.log("mmmm "+JSON.stringify(replyMarkUp[markup][0].text));
                         markUps.push(JSON.stringify(replyMarkUp[markup][0].text));
                       }
-                      console.log("markup length of "+markUps.length);
+                      //console.log("markup length of "+markUps.length);
                       const botMessage = new Message(messages[h].payload.telegram.text, 'bot',markUps);
                       this.update(botMessage);
                     }
