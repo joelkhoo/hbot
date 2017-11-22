@@ -28,8 +28,11 @@ export class ChatService {
                   //Extracts each individual response message
                   
                   for(let h in messages){
-                    if(messages[h].type == 0){
+                    if(messages[h].type == "0"){
                       const botMessage = new Message(messages[h].speech, 'bot');
+                      this.update(botMessage);
+                    } else if (messages[h].type == "4"){
+                      const botMessage = new Message(messages[h].payload.telegram.text, 'bot');
                       this.update(botMessage);
                     }
 
