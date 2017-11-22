@@ -6,6 +6,10 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap'
+import { Subscription } from 'rxjs/Subscription';
+import { of } from 'rxjs/observable/of';
+import { delay, share } from 'rxjs/operators';
+
 interface User {
   uid: string;
   email: string;
@@ -28,7 +32,7 @@ export class AuthService {
           } else {
             return Observable.of(null)
           }
-        })
+        }).pipe(share());
   }
   googleLogin() {
     const provider = new firebase.auth.GoogleAuthProvider()
@@ -52,6 +56,7 @@ export class AuthService {
       displayName: user.displayName,
       photoURL: user.photoURL
     }
+    console.log("Registered "+user.displayName);
     return userRef.set(data)
   }
   signOut() {

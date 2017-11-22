@@ -8,6 +8,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   imports: [
+    CommonModule,
     AngularFireAuthModule,
     AngularFirestoreModule
   ],

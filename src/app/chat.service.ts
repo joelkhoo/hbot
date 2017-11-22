@@ -54,5 +54,9 @@ export class ChatService {
   update(msg: Message) {
     this.conversation.next([msg]);
   }
+  //Clears all messages
+  clear() {
+    this.conversation = new BehaviorSubject<Message[]>([]);
+  }
 
 }

@@ -1,4 +1,35 @@
+<div *ngIf="auth.user | async then authenticated else guest">
+        <!-- template will replace this div -->
+</div>
+
+<!-- User NOT logged in -->
+<ng-template #guest>
+
+        <div id="user-container">
+                <div id="user-pic"></div>
+                <div hidden id="user-name"></div>
+                <button id="sign-in" (click)="auth.googleLogin()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
+                    <i class="material-icons">account_circle</i>Sign-in with Google
+                </button>
+        </div>
+        <div id="user-container">
+            <button (click)="auth.googleLogin()">
+                <i class="fa fa-google"></i> Sign-in with Google
+            </button>
+        </div>
+</ng-template>
 <!-- User logged in -->
+<ng-template #authenticated>
+    <div *ngIf="auth.user | async as user">
+        <h3>Howdy, {{ user.displayName }}</h3>
+        <img  [src]="user.photoURL">
+        <p>UID: {{ user.uid }}</p>
+        <p>Favorite Color: {{ user?.favoriteColor }} </p>
+        <button (click)="auth.signOut()">Logout</button>
+    </div>
+</ng-template>
+<!-- User logged in -->
+<!--
 <div id="user-container">
   <div hidden id="user-pic"></div>
   <div hidden id="user-name"></div>
@@ -9,9 +40,9 @@
       <i class="material-icons">account_circle</i>Sign-in with Google
   </button>
 </div>
-
+-->
 <!-- User NOT logged in -->
-
+<!--
 <div id="user-container">
   <div id="user-pic"></div>
   <div hidden id="user-name"></div>
@@ -19,3 +50,4 @@
       <i class="material-icons">account_circle</i>Sign-in with Google
   </button>
 </div>
+-->
