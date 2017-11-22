@@ -28,11 +28,11 @@ export class AuthService {
       this.user = this.afAuth.authState
         .switchMap(user => {
           if (user) {
-            return this.afs.doc<User>(`users/${user.uid}`).valueChanges()
+            return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
           } else {
-            return Observable.of(null)
+            return Observable.of(null);
           }
-        }).pipe(share());
+        })
   }
   googleLogin() {
     const provider = new firebase.auth.GoogleAuthProvider()
