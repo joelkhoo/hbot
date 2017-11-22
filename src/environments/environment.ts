@@ -11,9 +11,9 @@ export const environment = {
   firebase: {
     apiKey: 'AIzaSyBsgud6VqEv3oQtHnpfqinbkWuVTCgglVc',
     authDomain: 'zipdoc-f17a8.firebaseapp.com',
-    databaseURL: 'zipdoc-f17a8.firebaseapp.com',
+    databaseURL: 'https://zipdoc-f17a8.firebaseio.com',
     projectId: 'zipdoc-f17a8',
-    storageBucket: '<your-storage-bucket>'
+    storageBucket: 'gs://zipdoc-f17a8.appspot.com'
   }
 };
 
