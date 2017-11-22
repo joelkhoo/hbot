@@ -14,7 +14,8 @@
 <!-- User logged in -->
 <ng-template #authenticated>
     <div *ngIf="auth.user | async as user" id="user-container">
-        <img id="user-pic" [src]="user.photoURL">
+        <!--
+        <img id="user-pic" [src]="user.photoURL">-->
         <div id="user-name">{{ user.displayName }}</div>
         <button (click)="auth.signOut()">Sign-out</button>
     </div>
