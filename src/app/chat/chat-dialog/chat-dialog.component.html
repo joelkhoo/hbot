@@ -1,10 +1,18 @@
 <h1>ZipDoc</h1>
-<ng-container *ngFor="let message of messages | async">
-  <div class="message" [ngClass]="{ 'from': message.sentBy === 'bot',
-                                    'to':   message.sentBy === 'user' }">
-    {{ message.content }}
-  </div>
-</ng-container>
+<div id="messages">
+  <span id="message-filler"></span>
+  <ng-container *ngFor="let message of messages | async">
+    <div class="message" [ngClass]="{ 'from': message.sentBy === 'bot',
+                                      'to':   message.sentBy === 'user' }">
+      {{ message.content }}
+    </div>
+    <ng-container *ngIf="message.quickReplies.length>0">
+      <ng-container *ngFor="let qr of message.quickReplies; let i = index" >
+        <div class="message card" (click)="quickReply(qr)">👉🏻 {{qr}}</div>
+      </ng-container>
+    </ng-container>    
+  </ng-container>
+</div>
 <label for="nameField">{{startMessage}}</label>
 <input [(ngModel)]="formValue" (keyup.enter)="sendMessage()" type="text">
 <button (click)="sendMessage()">Send</button>

@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 // Message class for displaying messages in the component
 export class Message {
-  constructor(public content: string, public sentBy: string) {}
+  constructor(public content: string, public sentBy: string,  public quickReplies: String[] = []) {}
 }
 
 @Injectable()
@@ -32,7 +32,15 @@ export class ChatService {
                       const botMessage = new Message(messages[h].speech, 'bot');
                       this.update(botMessage);
                     } else if (messages[h].type == "4"){
-                      const botMessage = new Message(messages[h].payload.telegram.text, 'bot');
+                      let markUps = [];
+                      console.log("WOOT: "+JSON.stringify(messages[h].payload.telegram));
+                      const replyMarkUp = messages[h].payload.telegram.reply_markup.inline_keyboard;
+                      for(let markup in replyMarkUp){
+                        //console.log("mmmm "+JSON.stringify(replyMarkUp[markup][0].text));
+                        markUps.push(JSON.stringify(replyMarkUp[markup][0].text));
+                      }
+                      console.log("markup length of "+markUps.length);
+                      const botMessage = new Message(messages[h].payload.telegram.text, 'bot',markUps);
                       this.update(botMessage);
                     }
 
